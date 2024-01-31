@@ -5,6 +5,22 @@
  */
 
 function sleep(milliseconds) {
+    return new Promise(resolve => {
+currenttime= Date.now();
+elapsedtime= 0;
+
+function busywaitloop(){
+    while(elapsedtime<milliseconds){
+        elapsedtime= Date.now()-currenttime;
+
+    }
+    resolve();
+
+    
 }
+setTimeout(busywaitloop,0);
+    })
+}
+
 
 module.exports = sleep;
